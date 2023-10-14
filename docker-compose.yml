@@ -1,11 +1,28 @@
+# version: '3'
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - 8000:8000
+#     volumes:
+#       - /var/www/vendor/
+#       - ./src:/var/www
+
 version: '3'
 services:
-  app:
+  app1:
     build:
       context: .
       dockerfile: Dockerfile
+    image: lumen-apache-1
+    container_name: lumen-apache-container-1
     ports:
-      - 8000:8000
+      - "8000:80"
     volumes:
       - /var/www/vendor/
       - ./src:/var/www
+networks:
+  default:
+    name: lumen-network
